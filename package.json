@@ -1,0 +1,30 @@
+{
+  "name": "mhw_rpg",
+  "version": "0.0.0",
+  "description": "mhw_rpg",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "nodemon": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tritonjoyeux/mhw_rpg.git"
+  },
+  "keywords": [
+    "monster",
+    "hunter",
+    "world",
+    "rpg",
+    "discord"
+  ],
+  "author": "tritonjoyeux",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tritonjoyeux/mhw_rpg/issues"
+  },
+  "homepage": "https://github.com/tritonjoyeux/mhw_rpg#readme",
+  "dependencies": {
+    "discord.js": "^11.3.2"
+  }
+}

@@ -1,0 +1,1 @@
+{"id":"120970124453871616","username":"TЯITOПJOΫΣЦX","xp":2313,"weapon":"1","head":0,"ring":0,"body":0,"gloves":0,"waist":0,"legs":0,"inventory":"0:5/1:6/2:9/3:8/4:15/5:6/","money":5967}

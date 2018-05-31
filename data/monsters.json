@@ -1,0 +1,45 @@
+[
+  {
+    "pre": "Le",
+    "name": "Grand jagras",
+    "pdv": 1000,
+    "attk": 10,
+    "def": 10,
+    "win0_15": 2,
+    "win16_30": 1,
+    "win31_50": 1,
+    "win51_inf": 1,
+    "xpmin": 100,
+    "xpmax": 300,
+    "rewards": [
+      {
+        "id": 0,
+        "dropRate": 3
+      },
+      {
+        "id": 1,
+        "dropRate": 3
+      },
+      {
+        "id": 2,
+        "dropRate": 3
+      },
+      {
+        "id": 3,
+        "dropRate": 3
+      },
+      {
+        "id": 4,
+        "dropRate": 3
+      },
+      {
+        "id": 5,
+        "dropRate": 3
+      }
+    ],
+    "moneymin": 200,
+    "moneymax": 500,
+    "timeout": 120000,
+    "icon": "GrandJagras"
+  }
+]
