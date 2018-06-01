@@ -84,14 +84,24 @@ if (bckpTab !== undefined) {
 }
 
 //commands translation
-
 let commands = {
     "create": "create",
     "info": "info",
     "fight": "fight",
     "inventory": "inventory",
     "stats": "stats",
-    "buy": "buy"
+    "buy": "buy",
+    "help": "help"
+};
+
+let commandsInfo = {
+    "create": "Permet de créer un compte",
+    "info": "Affiche les information du joueur",
+    "fight": "Permet de lister/combatre un monstre",
+    "inventory": "Permet de montrer l'inventaire",
+    "stats": "Permet d'afficher les stats de ton personnage",
+    "buy": "Permet d'acheter des items dans le shop",
+    "help": "Permet d'afficher les commandes disponibles"
 };
 
 client.on('ready', () => {
@@ -106,13 +116,13 @@ client.on('message', (msg) => {
         if (msg.content === config.prefix + commands.create) {
             if (checkIsExist(msg) === false) {
                 game[msg.author.id] = new User(msg.author.username);
-                msg.reply("Félicitation! Ton compte a été créé");
+                msg.reply("**Félicitation! Ton compte a été créé**");
                 saveGame();
             } else {
-                msg.reply("Tu as déja un compte !");
+                msg.reply("**Tu as déja un compte !**");
             }
         } else if (checkIsExist(msg) === false) {
-            msg.reply("Merci de créer un compte (" + config.prefix + commands.create + ")");
+            msg.reply("Merci de créer un compte ```" + config.prefix + commands.create + "```");
         } else if (msg.content === config.prefix + commands.info) {
             var lvl = leveling[0];
             leveling.forEach((e, i) => {
@@ -121,25 +131,25 @@ client.on('message', (msg) => {
             });
 
             msg.channel.send(
-                "*Ton pseudo* : " + game[msg.author.id].username + "\n\n" +
-                "*Ton equipement* : \n" +
-                " - :crossed_swords: Arme : " + weapons[game[msg.author.id].weapon].name + "\n" +
-                " - :tophat: Tête : " + heads[game[msg.author.id].head].name + "\n" +
-                " - :shirt: Torse : " + bodys[game[msg.author.id].body].name + "\n" +
-                " - :muscle: Bras : " + gloves[game[msg.author.id].gloves].name + "\n" +
-                " - :ring: Anneau : " + rings[game[msg.author.id].ring].name + "\n" +
-                " - :jeans: Tassette : " + waists[game[msg.author.id].waist].name + "\n" +
-                " - :mans_shoe: Jambes : " + legs[game[msg.author.id].legs].name + "\n\n" +
-                "*Ton niveau* : " + lvl["lvl"] + " " + (lvl["lvl"] < 15 ? ":hatching_chick:" : lvl < 50["lvl"] ? ":hatched_chick:" : ":chicken:") +
-                "*Ton argent* : " + game[msg.author.id].money + " z"
+                "__**Ton pseudo**__ : " + game[msg.author.id].username + "\n\n" +
+                "__**Ton equipement**__ : \n" +
+                " - :crossed_swords: **Arme** : " + weapons[game[msg.author.id].weapon].name + "\n" +
+                " - :tophat: **Tête** : " + heads[game[msg.author.id].head].name + "\n" +
+                " - :shirt: **Torse** : " + bodys[game[msg.author.id].body].name + "\n" +
+                " - :muscle: **Bras** : " + gloves[game[msg.author.id].gloves].name + "\n" +
+                " - :ring: **Anneau** : " + rings[game[msg.author.id].ring].name + "\n" +
+                " - :jeans: **Tassette** : " + waists[game[msg.author.id].waist].name + "\n" +
+                " - :mans_shoe: **Jambes** : " + legs[game[msg.author.id].legs].name + "\n\n" +
+                "__**Ton niveau**__ : " + lvl["lvl"] + " " + (lvl["lvl"] < 15 ? ":hatching_chick:" : lvl < 50["lvl"] ? ":hatched_chick:" : ":chicken:") +
+                "__**Ton argent**__ : " + game[msg.author.id].money + " z"
             );
         } else if (args[0] === config.prefix + commands.fight) {
             if (game[msg.author.id].inFight === true) {
-                var content = "Tu es êtes deja en combat";
+                var content = "**Tu es êtes deja en combat**";
             } else {
                 if (args[1] !== undefined) {
                     if (monsters[args[1] - 1] !== undefined) {
-                        var content = "Lancement du combat contre " + monsters[args[1] - 1].pre + " " + monsters[args[1] - 1].name + ".. Durée : " + ((monsters[args[1] - 1].timeout / 1000) / 60) + " minutes";
+                        var content = "**Lancement du combat contre " + monsters[args[1] - 1].pre + " " + monsters[args[1] - 1].name + "..** __Durée__ : " + ((monsters[args[1] - 1].timeout / 1000) / 60) + " minutes";
                         game[msg.author.id].inFight = true;
                         monsters[args[1] - 1].rewards.forEach((element) => {
                             if (game[msg.author.id].inventory[element.id] === undefined)
@@ -189,7 +199,7 @@ client.on('message', (msg) => {
                                 var xpreward = Math.floor(Math.random() * monsters[args[1] - 1].xpmax) + monsters[args[1] - 1].xpmin;
                                 var moneyreward = Math.floor(Math.random() * monsters[args[1] - 1].moneymax) + monsters[args[1] - 1].moneymin;
 
-                                msg.reply("Fin de la quete contre " + monsters[args[1] - 1].pre + " " + monsters[args[1] - 1].name + " :" + monsters[args[1] - 1].icon + ":\n" +
+                                msg.reply("**Fin de la quete contre " + monsters[args[1] - 1].pre + " " + monsters[args[1] - 1].name + " :" + monsters[args[1] - 1].icon + "**:\n" +
                                     " Tu as gagné " + moneyreward + " z\n" +
                                     ":one: " + drop.join(", :one: ") + "\n" +
                                     "et " + xpreward + " xp");
@@ -197,29 +207,29 @@ client.on('message', (msg) => {
                                 game[msg.author.id].money += moneyreward;
                                 saveGame();
                             } else {
-                                msg.reply("Tu as perdu contre " + monsters[args[1] - 1].pre + " " + monsters[args[1] - 1].name + " :skull:..");
+                                msg.reply("**Tu as perdu contre " + monsters[args[1] - 1].pre + " " + monsters[args[1] - 1].name + " :skull:..**");
                             }
                             game[msg.author.id].inFight = false;
                         }, monsters[args[1] - 1].timeout);
                     } else {
-                        var content = "Monstre introuvable";
+                        var content = "**Monstre introuvable**";
                     }
 
                 } else {
-                    var content = "Liste des monstres disponibles: ";
+                    var content = "**Liste des monstres disponibles: **";
                     var counter = 1;
                     monsters.forEach((element) => {
                         content += "\n\n **" + counter + "** - " + element.name + " \n\t\t- Vie : " + element.pdv + " - Attaque : " + element.attk + " - Defence : " + element.def;
                     });
-                    content += "\n\n Entre la commande ```" + config.prefix + commands.fight + " 'le numéro du monstre'``` pour lancer une chasse";
+                    content += "\n\n **Entre la commande ```" + config.prefix + commands.fight + " 'le numéro du monstre'``` pour lancer une chasse**";
                 }
             }
             msg.channel.send(content)
         } else if (args[0] === config.prefix + commands.inventory) {
             if (game[msg.author.id].inventory.join("\n - ") === "") {
-                msg.channel.send("Inventaire vide");
+                msg.channel.send("**Inventaire vide**");
             } else {
-                var content = "Ton inventaire : ";
+                var content = "**Ton inventaire **: ";
                 game[msg.author.id].inventory.forEach((e, i) => {
                     if (e > 0)
                         content += "\n - " + rewards[i] + " x" + e;
@@ -244,14 +254,14 @@ client.on('message', (msg) => {
 
             var attk = weapons[game[msg.author.id].weapon].attk;
 
-            msg.reply("\nTes stats :\n\n" +
-                "Niveau : " + lvl["lvl"] + "\n" +
-                "Attaque : " + attk + "\n" +
-                "Defence : " + def + "\n" +
-                "Ton experience : " + xpProg)
+            msg.reply("\n__**Tes stats**__ :\n\n" +
+                "__Niveau__ : " + lvl["lvl"] + "\n" +
+                "__Attaque__ : " + attk + "\n" +
+                "__Defence__ : " + def + "\n" +
+                "__Ton experience__ : " + xpProg)
         } else if (args[0] === config.prefix + commands.buy) {
             if (game[msg.author.id].inFight === true) {
-                msg.channel.send("Tu es êtes deja en combat");
+                msg.channel.send("**Tu es êtes deja en combat**");
             } else {
                 if (args[1] !== undefined) {
                     if (args[2] !== undefined) {
@@ -261,49 +271,49 @@ client.on('message', (msg) => {
                                     case "weapon":
                                         if (buyItem(args, weapons, msg)) {
                                             game[msg.author.id].weapon = args[2];
-                                            msg.reply("Bravo :clap: tu viens d'acheter ```" + weapons[args[2]].name + "```");
+                                            msg.reply("**Bravo :clap: tu viens d'acheter ```" + weapons[args[2]].name + "```**");
                                             saveGame();
                                         }
                                         break;
                                     case "head":
                                         if (buyItem(args, heads, msg)) {
                                             game[msg.author.id].head = args[2];
-                                            msg.reply("Bravo :clap: tu viens d'acheter ```" + heads[args[2]].name + "```");
+                                            msg.reply("**Bravo :clap: tu viens d'acheter ```" + heads[args[2]].name + "```**");
                                             saveGame();
                                         }
                                         break;
                                     case "body":
                                         if (buyItem(args, bodys, msg)) {
                                             game[msg.author.id].body = args[2];
-                                            msg.reply("Bravo :clap: tu viens d'acheter ```" + bodys[args[2]].name + "```");
+                                            msg.reply("**Bravo :clap: tu viens d'acheter ```" + bodys[args[2]].name + "```**");
                                             saveGame();
                                         }
                                         break;
                                     case "ring":
                                         if (buyItem(args, rings, msg)) {
                                             game[msg.author.id].ring = args[2];
-                                            msg.reply("Bravo :clap: tu viens d'acheter ```" + rings[args[2]].name + "```");
+                                            msg.reply("**Bravo :clap: tu viens d'acheter ```" + rings[args[2]].name + "```**");
                                             saveGame();
                                         }
                                         break;
                                     case "gloves":
                                         if (buyItem(args, gloves, msg)) {
                                             game[msg.author.id].gloves = args[2];
-                                            msg.reply("Bravo :clap: tu viens d'acheter ```" + gloves[args[2]].name + "```");
+                                            msg.reply("**Bravo :clap: tu viens d'acheter ```" + gloves[args[2]].name + "```**");
                                             saveGame();
                                         }
                                         break;
                                     case "waist":
                                         if (buyItem(args, waists, msg)) {
                                             game[msg.author.id].waist = args[2];
-                                            msg.reply("Bravo :clap: tu viens d'acheter ```" + waists[args[2]].name + "```");
+                                            msg.reply("**Bravo :clap: tu viens d'acheter ```" + waists[args[2]].name + "```**");
                                             saveGame();
                                         }
                                         break;
                                     case "legs":
                                         if (buyItem(args, legs, msg)) {
                                             game[msg.author.id].legs = args[2];
-                                            msg.reply("Bravo :clap: tu viens d'acheter ```" + legs[args[2]].name + "```");
+                                            msg.reply("**Bravo :clap: tu viens d'acheter ```" + legs[args[2]].name + "```**");
                                             saveGame();
                                         }
                                         break;
@@ -337,7 +347,7 @@ client.on('message', (msg) => {
                     } else {
                         switch (args[1]) {
                             case "weapon":
-                                var weaponsAll = "Liste des armes :crossed_swords: disponible : \n";
+                                var weaponsAll = "**Liste des armes :crossed_swords: disponible** : \n";
                                 weapons.forEach((e, i) => {
                                     if (i > 0)
                                         weaponsAll += "\n - **" + i + "** Nom : " + e.name
@@ -346,7 +356,7 @@ client.on('message', (msg) => {
                                 msg.channel.send(weaponsAll);
                                 break;
                             case "head":
-                                var headsAll = "Liste des chapeaux :tophat: disponible : \n";
+                                var headsAll = "**Liste des chapeaux :tophat: disponible** : \n";
                                 heads.forEach((e, i) => {
                                     if (i > 0)
                                         headsAll += "\n - **" + i + "** Nom : " + e.name
@@ -355,7 +365,7 @@ client.on('message', (msg) => {
                                 msg.channel.send(headsAll);
                                 break;
                             case "body":
-                                var bodysAll = "Liste des torses :shirt: disponible : \n";
+                                var bodysAll = "**Liste des torses :shirt: disponible** : \n";
                                 bodys.forEach((e, i) => {
                                     if (i > 0)
                                         bodysAll += "\n - **" + i + "** Nom : " + e.name
@@ -364,7 +374,7 @@ client.on('message', (msg) => {
                                 msg.channel.send(bodysAll);
                                 break;
                             case "ring":
-                                var ringsAll = "Liste des anneaux :ring: disponible : \n";
+                                var ringsAll = "**Liste des anneaux :ring: disponible** : \n";
                                 rings.forEach((e, i) => {
                                     if (i > 0)
                                         ringsAll += "\n - **" + i + "** Nom : " + e.name
@@ -373,7 +383,7 @@ client.on('message', (msg) => {
                                 msg.channel.send(ringsAll);
                                 break;
                             case "gloves":
-                                var glovesAll = "Liste des bras :muscle: disponible : \n";
+                                var glovesAll = "**Liste des bras :muscle: disponible** : \n";
                                 gloves.forEach((e, i) => {
                                     if (i > 0)
                                         glovesAll += "\n - **" + i + "** Nom : " + e.name
@@ -382,7 +392,7 @@ client.on('message', (msg) => {
                                 msg.channel.send(glovesAll);
                                 break;
                             case "waist":
-                                var waistsAll = "Liste des tassettes :jeans: disponible : \n";
+                                var waistsAll = "**Liste des tassettes :jeans: disponible** : \n";
                                 waists.forEach((e, i) => {
                                     if (i > 0)
                                         waistsAll += "\n - **" + i + "** Nom : " + e.name
@@ -391,7 +401,7 @@ client.on('message', (msg) => {
                                 msg.channel.send(waistsAll);
                                 break;
                             case "legs":
-                                var legsAll = "Liste des jambes :mans_shoe: disponible : \n";
+                                var legsAll = "**Liste des jambes :mans_shoe: disponible** : \n";
                                 legs.forEach((e, i) => {
                                     if (i > 0)
                                         legsAll += "\n - **" + i + "** Nom : " + e.name
@@ -400,12 +410,12 @@ client.on('message', (msg) => {
                                 msg.channel.send(legsAll);
                                 break;
                             default:
-                                msg.channel.send("Objet introuvable");
+                                msg.channel.send("**Objet introuvable**");
                                 break;
                         }
                     }
                 } else {
-                    msg.channel.send("Liste des objets disponible : \n\n" +
+                    msg.channel.send("__**Liste des objets disponible**__ : \n\n" +
                         " - **head** : pour afficher les chapeaux :tophat:\n" +
                         " - **body** : pour afficher les torses :shirt:\n" +
                         " - **ring** : pour afficher les anneaux :ring:\n" +
@@ -417,12 +427,29 @@ client.on('message', (msg) => {
                     );
                 }
             }
+        } else if (args[0] === config.prefix + commands.help) {
+            var content = "__**Commande de l'intendante : **__\n\n";
+            commandsInfo.forEach((e, i) => {
+                content += config.prefix + i + " : **" + e + "**\n";
+            });
+            msg.channel.send(content);
         } else {
             msg.channel.send("Commande introuvable");
         }
     }
 });
 
+/*
+let commands = {
+    "create": "create",
+    "info": "info",
+    "fight": "fight",
+    "inventory": "inventory",
+    "stats": "stats",
+    "buy": "buy",
+    "help": "help"
+};
+ */
 function checkIsExist(msg) {
     return game[msg.author.id] !== undefined
 }
