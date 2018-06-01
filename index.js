@@ -431,7 +431,7 @@ client.on('message', (msg) => {
             var content = "__**Commande de l'intendante : **__\n\n";
             for (var property in commandsInfo) {
                 content += config.prefix + property + " : **" + commandsInfo[property] + "**\n";
-            });
+            }
             msg.channel.send(content);
         } else {
             msg.channel.send("Commande introuvable");
