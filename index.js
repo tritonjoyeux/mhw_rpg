@@ -428,7 +428,7 @@ client.on('message', (msg) => {
                 }
             }
         } else if (args[0] === config.prefix + commands.help) {
-            var content = "__**Commande de l'intendante : **__\n\n";
+            var content = "__**Commandes de l'intendante : **__\n\n";
             for (var property in commandsInfo) {
                 content += config.prefix + property + " : **" + commandsInfo[property] + "**\n";
             }
@@ -439,17 +439,6 @@ client.on('message', (msg) => {
     }
 });
 
-/*
-let commands = {
-    "create": "create",
-    "info": "info",
-    "fight": "fight",
-    "inventory": "inventory",
-    "stats": "stats",
-    "buy": "buy",
-    "help": "help"
-};
- */
 function checkIsExist(msg) {
     return game[msg.author.id] !== undefined
 }
