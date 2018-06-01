@@ -429,8 +429,8 @@ client.on('message', (msg) => {
             }
         } else if (args[0] === config.prefix + commands.help) {
             var content = "__**Commande de l'intendante : **__\n\n";
-            commandsInfo.forEach((e, i) => {
-                content += config.prefix + i + " : **" + e + "**\n";
+            for (var property in commandsInfo) {
+                content += config.prefix + property + " : **" + commandsInfo[property] + "**\n";
             });
             msg.channel.send(content);
         } else {
