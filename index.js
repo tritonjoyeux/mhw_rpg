@@ -190,6 +190,8 @@ client.on('message', (msg) => {
                             if (Math.floor(Math.random() * Math.floor(100)) > chanceWin) {
                                 var drop = [];
                                 monsters[args[1] - 1].rewards.forEach((element) => {
+                                    if(game[msg.author.id].inventory[element.id] === undefined)
+                                        game[msg.author.id].inventory[element.id] = 0;
                                     if (Math.floor(Math.random() * Math.floor(element.dropRate)) === 1) {
                                         game[msg.author.id].inventory[element.id] = parseInt(game[msg.author.id].inventory[element.id]) + 1;
                                         drop.push(rewards[element.id]);
