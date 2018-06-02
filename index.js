@@ -83,7 +83,7 @@ if (bckpTab !== undefined) {
     });
 }
 
-    //commands translation
+//commands translation
 let commands = {
     "create": "create",
     "info": "info",
@@ -190,8 +190,6 @@ client.on('message', (msg) => {
                             if (Math.floor(Math.random() * Math.floor(100)) > chanceWin) {
                                 var drop = [];
                                 monsters[args[1] - 1].rewards.forEach((element) => {
-                                    if(game[msg.author.id].inventory[element.id] === undefined)
-                                        game[msg.author.id].inventory[element.id] = 0;
                                     if (Math.floor(Math.random() * Math.floor(element.dropRate)) === 1) {
                                         game[msg.author.id].inventory[element.id] = parseInt(game[msg.author.id].inventory[element.id]) + 1;
                                         drop.push(rewards[element.id]);
@@ -203,7 +201,7 @@ client.on('message', (msg) => {
 
                                 msg.reply("**Fin de la quete contre " + monsters[args[1] - 1].pre + " " + monsters[args[1] - 1].name + "** :\n" +
                                     " Tu as gagné " + moneyreward + " z\n" +
-                                    ":one: " + drop.join(", :one: ") + "\n" +
+                                    (drop.length > 0 ? ":one: " + drop.join(", :one: \n") : "") +
                                     "et " + xpreward + " xp");
                                 game[msg.author.id].xp += xpreward;
                                 game[msg.author.id].money += moneyreward;
@@ -464,7 +462,7 @@ function checkItem(list, msg, name, args) {
         var materials = "\n";
         var hasMaterial = true;
         list[args[2]].materials.forEach((e, i) => {
-            if (game[msg.author.id].inventory[e] === undefined || game[msg.author.id].inventory[e] === '0')
+            if (game[msg.author.id].inventory[e] === undefined || game[msg.author.id].inventory[e] === '0' || game[msg.author.id].inventory[e] === 0)
                 hasMaterial = false;
             materials += "- :one: " + rewards[e] + "\n";
         });
@@ -482,7 +480,7 @@ function buyItem(args, list, msg) {
     } else {
         var hasMaterial = true;
         list[args[2]].materials.forEach((e, i) => {
-            if (game[msg.author.id].inventory[e] === undefined || game[msg.author.id].inventory[e] === '0')
+            if (game[msg.author.id].inventory[e] === undefined || game[msg.author.id].inventory[e] === '0' || game[msg.author.id].inventory[e] === 0)
                 hasMaterial = false;
         });
 

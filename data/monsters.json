@@ -14,32 +14,32 @@
     "rewards": [
       {
         "id": 0,
-        "dropRate": 3
+        "dropRate": 5
       },
       {
         "id": 1,
-        "dropRate": 3
+        "dropRate": 5
       },
       {
         "id": 2,
-        "dropRate": 3
+        "dropRate": 5
       },
       {
         "id": 3,
-        "dropRate": 3
+        "dropRate": 5
       },
       {
         "id": 4,
-        "dropRate": 3
+        "dropRate": 5
       },
       {
         "id": 5,
-        "dropRate": 3
+        "dropRate": 5
       }
     ],
     "moneymin": 200,
     "moneymax": 500,
-    "timeout": 120000,
+    "timeout": 1000,
     "icon": "GrandJagras"
   },
   {
