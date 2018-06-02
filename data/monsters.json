@@ -39,7 +39,7 @@
     ],
     "moneymin": 200,
     "moneymax": 500,
-    "timeout": 1000,
+    "timeout": 120000,
     "icon": "GrandJagras"
   },
   {
