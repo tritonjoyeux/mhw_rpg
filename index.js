@@ -83,7 +83,7 @@ if (bckpTab !== undefined) {
     });
 }
 
-//commands translation
+    //commands translation
 let commands = {
     "create": "create",
     "info": "info",
@@ -145,7 +145,7 @@ client.on('message', (msg) => {
             );
         } else if (args[0] === config.prefix + commands.fight) {
             if (game[msg.author.id].inFight === true) {
-                var content = "**Tu es êtes deja en combat**";
+                var content = "**Tu es deja en combat**";
             } else {
                 if (args[1] !== undefined) {
                     if (monsters[args[1] - 1] !== undefined) {
@@ -199,7 +199,7 @@ client.on('message', (msg) => {
                                 var xpreward = Math.floor(Math.random() * monsters[args[1] - 1].xpmax) + monsters[args[1] - 1].xpmin;
                                 var moneyreward = Math.floor(Math.random() * monsters[args[1] - 1].moneymax) + monsters[args[1] - 1].moneymin;
 
-                                msg.reply("**Fin de la quete contre " + monsters[args[1] - 1].pre + " " + monsters[args[1] - 1].name + " :" + monsters[args[1] - 1].icon + "**:\n" +
+                                msg.reply("**Fin de la quete contre " + monsters[args[1] - 1].pre + " " + monsters[args[1] - 1].name + "** :\n" +
                                     " Tu as gagné " + moneyreward + " z\n" +
                                     ":one: " + drop.join(", :one: ") + "\n" +
                                     "et " + xpreward + " xp");
@@ -219,7 +219,8 @@ client.on('message', (msg) => {
                     var content = "**Liste des monstres disponibles: **";
                     var counter = 1;
                     monsters.forEach((element) => {
-                        content += "\n\n **" + counter + "** - " + element.name + " \n\t\t- Vie : " + element.pdv + " - Attaque : " + element.attk + " - Defence : " + element.def;
+                        content += "\n\n **" + counter + "** - " + element.name + " \n\t\t- Vie : " + element.pdv + " - Attaque : " + element.attk + " - Défense : " + element.def;
+                        counter++;
                     });
                     content += "\n\n **Entre la commande ```" + config.prefix + commands.fight + " 'le numéro du monstre'``` pour lancer une chasse**";
                 }
@@ -257,11 +258,11 @@ client.on('message', (msg) => {
             msg.reply("\n__**Tes stats**__ :\n\n" +
                 "__Niveau__ : " + lvl["lvl"] + "\n" +
                 "__Attaque__ : " + attk + "\n" +
-                "__Defence__ : " + def + "\n" +
+                "__Défense__ : " + def + "\n" +
                 "__Ton experience__ : " + xpProg)
         } else if (args[0] === config.prefix + commands.buy) {
             if (game[msg.author.id].inFight === true) {
-                msg.channel.send("**Tu es êtes deja en combat**");
+                msg.channel.send("**Tu es deja en combat**");
             } else {
                 if (args[1] !== undefined) {
                     if (args[2] !== undefined) {
@@ -492,7 +493,7 @@ function buyItem(args, list, msg) {
             game[msg.author.id].money -= list[args[2]].price;
             return true;
         } else {
-            msg.reply("Il te manque " + (!hasMaterial ? "de l'argent" : "") + ((!hasMaterial && !hasMoney) ? " et " : "") + (!hasMaterial ? "des ressources" : "") + " pour acheter cet item :sob:");
+            msg.reply("Il te manque " + (!hasMoney ? "de l'argent" : "") + ((!hasMaterial && !hasMoney) ? " et " : "") + (!hasMaterial ? "des ressources" : "") + " pour acheter cet item :sob:");
             return false;
         }
     }
