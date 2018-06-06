@@ -1,0 +1,6 @@
+1  "Cuir de grand jagras",
+2  "Crocs de grand jagras",
+3  "Griffes de grand jagras",
+4  "Oreilles de grand jagras",
+5  "Oeuf de grand jagras",
+6  "Crinière de grand jagras"

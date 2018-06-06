@@ -1,0 +1,64 @@
+[
+  {
+    "pre": "Le",
+    "name": "Grand jagras",
+    "pdv": 1000,
+    "attk": 10,
+    "def": 10,
+    "win0_15": 2,
+    "win16_30": 1,
+    "win31_50": 1,
+    "win51_inf": 1,
+    "xpmin": 100,
+    "xpmax": 300,
+    "rewards": [
+      {
+        "id": 0,
+        "dropRate": 5
+      },
+      {
+        "id": 1,
+        "dropRate": 5
+      },
+      {
+        "id": 2,
+        "dropRate": 5
+      },
+      {
+        "id": 3,
+        "dropRate": 5
+      },
+      {
+        "id": 4,
+        "dropRate": 5
+      },
+      {
+        "id": 5,
+        "dropRate": 5
+      }
+    ],
+    "moneymin": 200,
+    "moneymax": 500,
+    "timeout": 120000,
+    "icon": "GrandJagras"
+  },
+  {
+    "pre": "La",
+    "name": "Minuscule Diiva",
+    "pdv": 1,
+    "attk": 1,
+    "def": 1,
+    "win0_15": 1,
+    "win16_30": 1,
+    "win31_50": 1,
+    "win51_inf": 1,
+    "xpmin": 10,
+    "xpmax": 30,
+    "rewards": [
+    ],
+    "moneymin": 10,
+    "moneymax": 30,
+    "timeout": 60000,
+    "icon": "Kappa"
+  }
+]
