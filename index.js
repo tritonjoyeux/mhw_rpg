@@ -93,7 +93,8 @@ let commands = {
     "stats": "stats",
     "buy": "buy",
     "help": "help",
-    "expe": "expe"
+    "expe": "expe",
+    "leader": "leader"
 };
 
 let commandsInfo = {
@@ -104,7 +105,8 @@ let commandsInfo = {
     "stats": "Permet d'afficher les stats de ton personnage",
     "buy": "Permet d'acheter des items dans le shop",
     "help": "Permet d'afficher les commandes disponibles",
-    "expe": "Permet de partir en éxpédition"
+    "expe": "Permet de partir en éxpédition",
+    "leader": "Permet d'afficher le leaderboard"
 };
 
 client.on('ready', () => {
@@ -484,6 +486,40 @@ client.on('message', (msg) => {
                     msg.channel.send(content);
                 }
             }
+        } else if (args[0] === config.prefix + commands.leader) {
+            var leaders = [];
+            for (var e in game) {
+                if (leaders[game[e].xp] === undefined) {
+                    leaders[game[e].xp] = [game[e]]
+                } else {
+                    leaders[game[e].xp].push(game[e]);
+                }
+            }
+
+            var icon = [
+                ":crown:",
+                ":medal:",
+                ":military_medal:",
+                ":reminder_ribbon:",
+                ":rosette:"
+            ];
+            var iconCounter = 0;
+            var content = "__Liste des meilleurs chasseurs__ : \n\n";
+
+            leaders.reverse().forEach((e, i) => {
+                if (icon[iconCounter] === undefined)
+                    return;
+
+                if (leaders[i] !== undefined) {
+
+                    leaders[i].forEach((e) => {
+                        content += icon[iconCounter] + " **" + e.username + "** avec " + e.xp + " d'experience \n";
+                    });
+                    iconCounter++;
+                }
+            });
+
+            msg.channel.send(content);
         } else {
             msg.channel.send("Commande introuvable");
         }
