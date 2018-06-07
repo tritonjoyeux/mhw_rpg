@@ -13,6 +13,7 @@ let weapons = require('./data/weapons.json');
 let monsters = require('./data/monsters.json');
 let rewards = require('./data/rewards.json');
 let leveling = require('./data/levels.json');
+let expe = require('./data/expe.json');
 
 let config = require('./config/config.json');
 
@@ -91,7 +92,8 @@ let commands = {
     "inventory": "inventory",
     "stats": "stats",
     "buy": "buy",
-    "help": "help"
+    "help": "help",
+    "expe": "expe"
 };
 
 let commandsInfo = {
@@ -101,7 +103,8 @@ let commandsInfo = {
     "inventory": "Permet de montrer l'inventaire",
     "stats": "Permet d'afficher les stats de ton personnage",
     "buy": "Permet d'acheter des items dans le shop",
-    "help": "Permet d'afficher les commandes disponibles"
+    "help": "Permet d'afficher les commandes disponibles",
+    "expe": "Permet de partir en éxpédition"
 };
 
 client.on('ready', () => {
@@ -111,7 +114,7 @@ client.on('ready', () => {
 client.login(config.token);
 
 client.on('message', (msg) => {
-    if (msg.channel.id === "451303690792599552" && msg.author.id !== "427578234646036498" && msg.content.indexOf(config.prefix) === 0) {
+    if (msg.channel.id === config.channel || msg.channel.id === "451303690792599552" && msg.author.id !== "427578234646036498" && msg.content.indexOf(config.prefix) === 0) {
         var args = msg.content.split(" ");
         if (msg.content === config.prefix + commands.create) {
             if (checkIsExist(msg) === false) {
@@ -145,7 +148,7 @@ client.on('message', (msg) => {
             );
         } else if (args[0] === config.prefix + commands.fight) {
             if (game[msg.author.id].inFight === true) {
-                var content = "**Tu es deja en combat**";
+                var content = "**Tu es deja occupé**";
             } else {
                 if (args[1] !== undefined) {
                     if (monsters[args[1] - 1] !== undefined) {
@@ -187,22 +190,22 @@ client.on('message', (msg) => {
                                 }
                             }
 
-                            if (Math.floor(Math.random() * Math.floor(100)) > chanceWin) {
+                            if (randomIntFromInterval(0, 100) > chanceWin) {
                                 var drop = [];
                                 monsters[args[1] - 1].rewards.forEach((element) => {
-                                    if (Math.floor(Math.random() * Math.floor(element.dropRate)) === 1) {
+                                    if (randomIntFromInterval(1, element.dropRate) === 1) {
                                         game[msg.author.id].inventory[element.id] = parseInt(game[msg.author.id].inventory[element.id]) + 1;
                                         drop.push(rewards[element.id]);
                                     }
                                 });
 
-                                var xpreward = Math.floor(Math.random() * monsters[args[1] - 1].xpmax) + monsters[args[1] - 1].xpmin;
-                                var moneyreward = Math.floor(Math.random() * monsters[args[1] - 1].moneymax) + monsters[args[1] - 1].moneymin;
+                                var xpreward = randomIntFromInterval(monsters[args[1] - 1].xpmin, monsters[args[1] - 1].xpmax);
+                                var moneyreward = randomIntFromInterval(monsters[args[1] - 1].moneymin, monsters[args[1] - 1].moneymax);
 
                                 msg.reply("**Fin de la quete contre " + monsters[args[1] - 1].pre + " " + monsters[args[1] - 1].name + "** :\n" +
                                     " Tu as gagné " + moneyreward + " z\n" +
-                                    (drop.length > 0 ? ":one: " + drop.join(", :one: \n") : "") +
-                                    "et " + xpreward + " xp");
+                                    (drop.length > 0 ? "Récompenses :\n :one: " + drop.join("\n :one: ") : "0 objet") +
+                                    "\net " + xpreward + " xp");
                                 game[msg.author.id].xp += xpreward;
                                 game[msg.author.id].money += moneyreward;
                                 saveGame();
@@ -262,7 +265,7 @@ client.on('message', (msg) => {
                 "__Ton experience__ : " + xpProg)
         } else if (args[0] === config.prefix + commands.buy) {
             if (game[msg.author.id].inFight === true) {
-                msg.channel.send("**Tu es deja en combat**");
+                msg.channel.send("**Tu es deja occupé**");
             } else {
                 if (args[1] !== undefined) {
                     if (args[2] !== undefined) {
@@ -434,6 +437,53 @@ client.on('message', (msg) => {
                 content += config.prefix + property + " : **" + commandsInfo[property] + "**\n";
             }
             msg.channel.send(content);
+        } else if (args[0] === config.prefix + commands.expe) {
+            if (game[msg.author.id].inFight === true) {
+                msg.channel.send("**Tu es deja occupé**");
+            } else {
+                if (args[1] !== undefined) {
+                    if (expe[args[1] - 1] === undefined) {
+                        msg.channel.send("**Zone incorrect**");
+                    } else {
+                        if (game[msg.author.id].money >= expe[args[1] - 1].price) {
+                            msg.channel.send("**Lancement de l'expedition dans " + expe[args[1] - 1].pre + " " + expe[args[1] - 1].name + "..** __Durée__ : " + ((expe[args[1] - 1].timeout / 1000) / 60) + " minutes");
+                            game[msg.author.id].inFight = true;
+                            expe[args[1] - 1].rewards.forEach((element) => {
+                                if (game[msg.author.id].inventory[element.id] === undefined)
+                                    game[msg.author.id].inventory[element.id] = 0;
+                            });
+                            setTimeout(() => {
+                                var drop = [];
+                                expe[args[1] - 1].rewards.forEach((element) => {
+                                    if (randomIntFromInterval(1, element.dropRate) === 1) {
+                                        game[msg.author.id].inventory[element.id] = parseInt(game[msg.author.id].inventory[element.id]) + 1;
+                                        drop.push(rewards[element.id]);
+                                    }
+                                });
+                                msg.reply("**Fin de l'expedition dans " + expe[args[1] - 1].pre + " " + expe[args[1] - 1].name + "** :\n" +
+                                    (drop.length > 0 ? "Récompenses :\n :one: " + drop.join("\n :one: ") : " Pas de récompenses"));
+                                game[msg.author.id].money -= expe[args[1] - 1].price;
+                                saveGame();
+                                game[msg.author.id].inFight = false;
+                            }, expe[args[1] - 1].timeout);
+                        } else {
+                            msg.reply("**Tu n'as pas asser d'argent..**");
+                        }
+                    }
+                } else {
+                    var content = "**Liste des régions disponibles**: ";
+                    expe.forEach((e, i) => {
+                        content += "\n\n **" + (parseInt(i) + 1) + "** - " + e.name + " \n\t\t\t\t- __Prix__ : " + e.price + " - __Durée__ : " + ((e.timeout / 1000) / 60) + " minutes";
+                        if (game[msg.author.id].money >= e.price) {
+                            content += "  :white_check_mark:";
+                        } else {
+                            content += "  :x:";
+                        }
+                    });
+                    content += "\n\n **Entre la commande ```" + config.prefix + commands.expe + " 'le numéro correspondant'``` pour lancer une éxpédition**";
+                    msg.channel.send(content);
+                }
+            }
         } else {
             msg.channel.send("Commande introuvable");
         }
@@ -497,4 +547,8 @@ function buyItem(args, list, msg) {
             return false;
         }
     }
+}
+
+function randomIntFromInterval(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
 }

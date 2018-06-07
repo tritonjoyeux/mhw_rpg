@@ -3,5 +3,28 @@
     "name": "Jambes en cuir",
     "price": 0,
     "value": 1
+  },
+  {
+    "name": "Jambes jagras",
+    "price": 1000,
+    "materials": [
+      0,
+      2,
+      5,
+      12,
+      14
+    ],
+    "value": 2
+  },
+  {
+    "name": "Jambes qurupeco",
+    "price": 3000,
+    "materials": [
+      6,
+      8,
+      11,
+      12
+    ],
+    "value": 4
   }
 ]

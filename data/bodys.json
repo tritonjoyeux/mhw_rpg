@@ -3,5 +3,29 @@
     "name": "Torse en cuir",
     "price": 0,
     "value": 1
+  },
+  {
+    "name": "Torse jagras",
+    "price": 1000,
+    "materials": [
+      0,
+      1,
+      4,
+      12,
+      15,
+      16
+    ],
+    "value": 2
+  },
+  {
+    "name": "Torse jagras",
+    "price": 1000,
+    "materials": [
+      9,
+      7,
+      13,
+      15
+    ],
+    "value": 4
   }
 ]

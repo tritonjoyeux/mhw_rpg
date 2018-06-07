@@ -3,5 +3,29 @@
     "name": "Haume en cuir",
     "price": 0,
     "value": 1
+  },
+  {
+    "name": "Tête de jagras",
+    "price": 1000,
+    "materials": [
+      1,
+      3,
+      5,
+      12,
+      14,
+      16
+    ],
+    "value": 2
+  },
+  {
+    "name": "Casque qurupeco",
+    "price": 3000,
+    "materials": [
+      6,
+      7,
+      9,
+      16
+    ],
+    "value": 4
   }
 ]

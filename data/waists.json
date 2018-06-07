@@ -3,5 +3,28 @@
     "name": "Tassette en cuir",
     "price": 0,
     "value": 1
+  },
+  {
+    "name": "Tassetes jagras",
+    "price": 1000,
+    "materials": [
+      1,
+      2,
+      3,
+      13,
+      17
+    ],
+    "value": 2
+  },
+  {
+    "name": "Jupe qurupeco",
+    "price": 3000,
+    "materials": [
+      8,
+      9,
+      12,
+      14
+    ],
+    "value": 4
   }
 ]

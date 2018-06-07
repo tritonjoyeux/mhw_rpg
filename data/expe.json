@@ -1,0 +1,34 @@
+[
+  {
+    "pre": "La",
+    "name": "Foret ancienne",
+    "timeout": 300000,
+    "rewards": [
+      {
+        "id": 12,
+        "dropRate": 5
+      },
+      {
+        "id": 13,
+        "dropRate": 5
+      },
+      {
+        "id": 14,
+        "dropRate": 5
+      },
+      {
+        "id": 15,
+        "dropRate": 5
+      },
+      {
+        "id": 16,
+        "dropRate": 5
+      },
+      {
+        "id": 17,
+        "dropRate": 5
+      }
+    ],
+    "price": 1000
+  }
+]

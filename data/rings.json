@@ -3,5 +3,29 @@
     "name": "Anneau en peau de mouton",
     "price": 0,
     "value": 1
+  },
+  {
+    "name": "Anneau en cuir de jagras",
+    "price": 1000,
+    "materials": [
+      0,
+      4,
+      5,
+      13,
+      16
+    ],
+    "value": 2
+  },
+  {
+    "name": "Anneau de feu",
+    "price": 3000,
+    "materials": [
+      7,
+      9,
+      10,
+      13,
+      14
+    ],
+    "value": 4
   }
 ]
