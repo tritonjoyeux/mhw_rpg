@@ -1,5 +1,4 @@
-# Grand jagras
-
+#   chasser un Grand jagras
 0  "Cuir de grand jagras",
 1  "Crocs de grand jagras",
 2  "Griffes de grand jagras",
@@ -7,8 +6,7 @@
 4  "Oeuf de grand jagras",
 5  "Crinière de grand jagras"
 
-# Qurupeco
-
+#   chasser un Qurupeco
 6  "Poche de feu"
 7  "Silex"
 8  "Bave du Qurupeco"
@@ -16,8 +14,7 @@
 10 "Poche de soin"
 11 "Capsule sonique"
 
-# Foret ancienne
-
+#   en éxpédition dans la Foret ancienne
 12 "Herbes"
 13 "Scarlux"
 14 "Mandragore"

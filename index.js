@@ -12,6 +12,7 @@ let weapons = require('./data/weapons.json');
 
 let monsters = require('./data/monsters.json');
 let rewards = require('./data/rewards.json');
+let rewardsW = require('./data/rewardsWhere.json');
 let leveling = require('./data/levels.json');
 let expe = require('./data/expe.json');
 
@@ -94,7 +95,8 @@ let commands = {
     "buy": "buy",
     "help": "help",
     "expe": "expe",
-    "leader": "leader"
+    "leader": "leader",
+    "materials": "materials"
 };
 
 let commandsInfo = {
@@ -520,6 +522,28 @@ client.on('message', (msg) => {
             });
 
             msg.channel.send(content);
+        } else if (args[0] === config.prefix + commands.materials) {
+            if (args[1] !== undefined) {
+                if (rewards[args[1]-1] === undefined) {
+                    msg.channel.send("Materiel inconnu");
+                } else {
+                    var where = undefined;
+                    rewardsW.forEach((e) => {
+                        if (where !== undefined)
+                            return;
+                        if (e.rewards.indexOf(args[1] - 1) !== -1)
+                            where = e.name
+                    });
+                    msg.channel.send("Il faut aller " + where + " pour obternir " + rewards[args[1] - 1]);
+                }
+            } else {
+                var content = "**Liste des materiaux disponibles** :\n";
+                rewards.forEach((e, i) => {
+                    content += "**" + parseInt(i + 1) + "** " + e + "\n";
+                });
+                content += "\n **Entre la commande ```" + config.prefix + commands.materials + " 'le numéro correspondant'``` pour plus d'info**";
+                msg.channel.send(content);
+            }
         } else {
             msg.channel.send("Commande introuvable");
         }

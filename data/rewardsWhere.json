@@ -1,0 +1,35 @@
+[
+  {
+    "name": "chasser un Grand jagras",
+    "rewards": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  {
+    "name": "chasser un Qurupeco",
+    "rewards": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  {
+    "name": "en éxpédition dans la Foret ancienne",
+    "rewards": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  }
+]
