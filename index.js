@@ -114,7 +114,7 @@ client.on('ready', () => {
 client.login(config.token);
 
 client.on('message', (msg) => {
-    if (msg.channel.id === config.channel || msg.channel.id === "451303690792599552" && msg.author.id !== "427578234646036498" && msg.content.indexOf(config.prefix) === 0) {
+    if ((msg.channel.id === config.channel || msg.channel.id === "451303690792599552") && msg.author.id !== "427578234646036498" && msg.content.indexOf(config.prefix) === 0) {
         var args = msg.content.split(" ");
         if (msg.content === config.prefix + commands.create) {
             if (checkIsExist(msg) === false) {
