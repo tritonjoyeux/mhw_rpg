@@ -503,13 +503,19 @@ client.on('message', (msg) => {
                     }
                 } else {
                     var content = "**Liste des régions disponibles**: ";
+                    var lvl = leveling[0];
+                    leveling.forEach((e, i) => {
+                        if (game[msg.author.id].xp >= e.xpmin && game[msg.author.id].xp <= e.xpmax)
+                            lvl = leveling[i];
+                    });
                     expe.forEach((e, i) => {
-                        content += "\n\n **" + (parseInt(i) + 1) + "** - " + e.name + " \n\t\t\t\t- __Prix__ : " + e.price + " - __Durée__ : " + ((e.timeout / 1000) / 60) + " minutes";
+                        content += "\n\n **" + (parseInt(i) + 1) + "** - " + e.name + " \n\t\t\t\t- __Prix__ : " + e.price;
                         if (game[msg.author.id].money >= e.price) {
                             content += "  :white_check_mark:";
                         } else {
                             content += "  :x:";
                         }
+                        content += " - __Niveau__ : " + e.lvlmin + (lvl["lvl"] >= e.lvlmin ? ":white_check_mark:" : ":x:") + " - __Durée__ : " + ((e.timeout / 1000) / 60) + " minutes";
                     });
                     content += "\n\n **Entre la commande ```" + config.prefix + commands.expe + " 'le numéro correspondant'``` pour lancer une éxpédition**";
                     msg.channel.send(content);

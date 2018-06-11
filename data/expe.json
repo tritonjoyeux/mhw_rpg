@@ -2,6 +2,7 @@
   {
     "pre": "La",
     "name": "Foret ancienne",
+    "lvlmin": 3,
     "timeout": 300000,
     "rewards": [
       {
