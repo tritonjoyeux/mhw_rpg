@@ -1,6 +1,6 @@
 {
   "name": "mhw_rpg",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "mhw_rpg",
   "main": "index.js",
   "scripts": {
