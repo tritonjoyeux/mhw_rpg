@@ -153,11 +153,13 @@ client.on('message', (msg) => {
         } else if (args[0] === config.prefix + commands.fight) {
             if (game[msg.author.id].inFight === true) {
                 var content = "**Tu es deja occupé**";
+                msg.channel.send(content)
             } else {
                 if (args[1] !== undefined) {
                     if (monsters[args[1] - 1] !== undefined) {
                         var content = "**Lancement du combat contre " + monsters[args[1] - 1].pre + " " + monsters[args[1] - 1].name + "..** __Durée__ : " + ((monsters[args[1] - 1].timeout / 1000) / 60) + " minutes";
                         game[msg.author.id].inFight = true;
+                        game[msg.author.id].questTime = monsters[args[1] - 1].timeout / 1000;
                         monsters[args[1] - 1].rewards.forEach((element) => {
                             if (game[msg.author.id].inventory[element.id] === undefined)
                                 game[msg.author.id].inventory[element.id] = 0;
@@ -218,8 +220,21 @@ client.on('message', (msg) => {
                             }
                             game[msg.author.id].inFight = false;
                         }, monsters[args[1] - 1].timeout);
+                        msg.channel.send(content);
+
+                        msg.reply("Temps restant : " + game[msg.author.id].questTime + " secondes").then(timer => {
+                            var inter = setInterval(() => {
+                                game[msg.author.id].questTime -= 10;
+                                if (game[msg.author.id].questTime <= 0)
+                                    game[msg.author.id].questTime = "Fin de quete";
+                                timer.edit("<@" + msg.author.id + "> Temps restant : " + game[msg.author.id].questTime + (!isNaN(game[msg.author.id].questTime) ? " secondes" : ""));
+                                if (isNaN(game[msg.author.id].questTime))
+                                    clearInterval(inter);
+                            }, 10000)
+                        });
                     } else {
                         var content = "**Monstre introuvable**";
+                        msg.channel.send(content);
                     }
 
                 } else {
@@ -230,9 +245,9 @@ client.on('message', (msg) => {
                         counter++;
                     });
                     content += "\n\n **Entre la commande ```" + config.prefix + commands.fight + " 'le numéro du monstre'``` pour lancer une chasse**";
+                    msg.channel.send(content)
                 }
             }
-            msg.channel.send(content)
         } else if (args[0] === config.prefix + commands.inventory) {
             if (game[msg.author.id].inventory.join("\n - ") === "") {
                 msg.channel.send("**Inventaire vide**");
@@ -269,7 +284,7 @@ client.on('message', (msg) => {
                 "__Ton experience__ : " + xpProg)
         } else if (args[0] === config.prefix + commands.buy) {
             if (game[msg.author.id].inFight === true) {
-                msg.channel.send("**Tu es deja occupé**");
+                var content = "**Tu es deja occupé**";
             } else {
                 if (args[1] !== undefined) {
                     if (args[2] !== undefined) {
@@ -443,7 +458,7 @@ client.on('message', (msg) => {
             msg.channel.send(content);
         } else if (args[0] === config.prefix + commands.expe) {
             if (game[msg.author.id].inFight === true) {
-                msg.channel.send("**Tu es deja occupé**");
+                var content = "**Tu es deja occupé**";
             } else {
                 if (args[1] !== undefined) {
                     if (expe[args[1] - 1] === undefined) {
@@ -452,6 +467,7 @@ client.on('message', (msg) => {
                         if (game[msg.author.id].money >= expe[args[1] - 1].price) {
                             msg.channel.send("**Lancement de l'expedition dans " + expe[args[1] - 1].pre + " " + expe[args[1] - 1].name + "..** __Durée__ : " + ((expe[args[1] - 1].timeout / 1000) / 60) + " minutes");
                             game[msg.author.id].inFight = true;
+                            game[msg.author.id].questTime = expe[args[1] - 1].timeout / 1000;
                             expe[args[1] - 1].rewards.forEach((element) => {
                                 if (game[msg.author.id].inventory[element.id] === undefined)
                                     game[msg.author.id].inventory[element.id] = 0;
@@ -470,6 +486,17 @@ client.on('message', (msg) => {
                                 saveGame();
                                 game[msg.author.id].inFight = false;
                             }, expe[args[1] - 1].timeout);
+
+                            msg.reply("Temps restant : " + game[msg.author.id].questTime + " secondes").then(timer => {
+                                var inter = setInterval(() => {
+                                    game[msg.author.id].questTime -= 10;
+                                    if (game[msg.author.id].questTime <= 0)
+                                        game[msg.author.id].questTime = "Fin de quete";
+                                    timer.edit("<@" + msg.author.id + "> Temps restant : " + game[msg.author.id].questTime + (!isNaN(game[msg.author.id].questTime) ? " secondes" : ""));
+                                    if (isNaN(game[msg.author.id].questTime))
+                                        clearInterval(inter);
+                                }, 10000)
+                            });
                         } else {
                             msg.reply("**Tu n'as pas asser d'argent..**");
                         }
@@ -524,7 +551,7 @@ client.on('message', (msg) => {
             msg.channel.send(content);
         } else if (args[0] === config.prefix + commands.materials) {
             if (args[1] !== undefined) {
-                if (rewards[args[1]-1] === undefined) {
+                if (rewards[args[1] - 1] === undefined) {
                     msg.channel.send("Materiel inconnu");
                 } else {
                     var where = undefined;
