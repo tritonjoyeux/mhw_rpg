@@ -35,6 +35,7 @@ Enjoy :)
 Features|Status
 ---|---
 Fight|Done
+Timer|Done
 Expe|Done
 Drop|Done
 Buy|Done

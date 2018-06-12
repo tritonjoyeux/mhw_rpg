@@ -284,7 +284,7 @@ client.on('message', (msg) => {
                 "__Ton experience__ : " + xpProg)
         } else if (args[0] === config.prefix + commands.buy) {
             if (game[msg.author.id].inFight === true) {
-                var content = "**Tu es deja occupé**";
+                msg.channel.send("**Tu es deja occupé**");
             } else {
                 if (args[1] !== undefined) {
                     if (args[2] !== undefined) {

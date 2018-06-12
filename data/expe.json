@@ -31,5 +31,38 @@
       }
     ],
     "price": 1000
+  },
+  {
+    "pre": "Les",
+    "name": "Égouts d'Astera",
+    "lvlmin": 8,
+    "timeout": 600000,
+    "rewards": [
+      {
+        "id": 18,
+        "dropRate": 4
+      },
+      {
+        "id": 19,
+        "dropRate": 5
+      },
+      {
+        "id": 20,
+        "dropRate": 5
+      },
+      {
+        "id": 21,
+        "dropRate": 4
+      },
+      {
+        "id": 22,
+        "dropRate": 5
+      },
+      {
+        "id": 23,
+        "dropRate": 6
+      }
+    ],
+    "price": 2000
   }
 ]

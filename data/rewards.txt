@@ -21,3 +21,11 @@
 15 "Pierre de lune"
 16 "Fer"
 17 "Miel"
+
+#   en éxpédition dans les Egouts d'astera
+18 "Mousse"
+19 "Crocs de rats"
+20 "Peau de ???"
+21 "Pierre"
+22 "Oeufs d'araignées"
+23 "Poche de poison"
