@@ -29,3 +29,10 @@
 21 "Pierre"
 22 "Oeufs d'araignées"
 23 "Poche de poison"
+
+#   chasser un Barroth
+24 "Boue"
+25 "Carapace Barroth"
+26 "Queue de Barroth"
+27 "Scalpe de Barroth"
+28 "Gemme Wyvern"

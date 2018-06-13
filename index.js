@@ -108,7 +108,8 @@ let commandsInfo = {
     "buy": "Permet d'acheter des items dans le shop",
     "help": "Permet d'afficher les commandes disponibles",
     "expe": "Permet de partir en éxpédition",
-    "leader": "Permet d'afficher le leaderboard"
+    "leader": "Permet d'afficher le leaderboard",
+    "materials": "Permet d'afficher les materiaux"
 };
 
 client.on('ready', () => {

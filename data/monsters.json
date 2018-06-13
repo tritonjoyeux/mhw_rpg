@@ -41,8 +41,6 @@
     "moneymax": 500,
     "timeout": 120000
   },
-
-
   {
     "pre": "Le",
     "name": "Qurupeco",
@@ -84,5 +82,43 @@
     "moneymin": 400,
     "moneymax": 700,
     "timeout": 180000
+  },
+  {
+    "pre": "Le",
+    "name": "Barroth",
+    "pdv": 4000,
+    "attk": 30,
+    "def": 30,
+    "win0_15": 5,
+    "win16_30": 1,
+    "win31_50": 1,
+    "win51_inf": 1,
+    "xpmin": 500,
+    "xpmax": 900,
+    "rewards": [
+      {
+        "id": 24,
+        "dropRate": 3
+      },
+      {
+        "id": 25,
+        "dropRate": 3
+      },
+      {
+        "id": 26,
+        "dropRate": 5
+      },
+      {
+        "id": 27,
+        "dropRate": 5
+      },
+      {
+        "id": 28,
+        "dropRate": 10
+      }
+    ],
+    "moneymin": 500,
+    "moneymax": 1000,
+    "timeout": 300000
   }
 ]
