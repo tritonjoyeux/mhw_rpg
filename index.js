@@ -73,7 +73,7 @@ if (bckpTab !== undefined) {
         game[user.id].ring = user.ring;
         game[user.id].body = user.body;
         game[user.id].gloves = user.gloves;
-        game[user.id].waists = user.waist;
+        game[user.id].waist = user.waist;
         game[user.id].legs = user.legs;
         game[user.id].inventory = [];
         user.inventory.split("/").forEach((e) => {
@@ -137,7 +137,7 @@ client.on('message', (msg) => {
                 if (game[msg.author.id].xp >= e.xpmin && game[msg.author.id].xp <= e.xpmax)
                     lvl = leveling[i];
             });
-
+console.log(game[msg.author.id]);
             msg.channel.send(
                 "__**Ton pseudo**__ : " + game[msg.author.id].username + "\n\n" +
                 "__**Ton equipement**__ : \n" +
