@@ -27,5 +27,16 @@
       16
     ],
     "value": 4
+  },
+  {
+    "name": "Couronne Barroth",
+    "price": 6000,
+    "materials": [
+      15,
+      16,
+      25,
+      27
+    ],
+    "value": 6
   }
 ]

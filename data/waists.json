@@ -26,5 +26,17 @@
       14
     ],
     "value": 4
+  },
+  {
+    "name": "Tassete Barroth",
+    "price": 6000,
+    "materials": [
+      15,
+      16,
+      25,
+      27,
+      28
+    ],
+    "value": 6
   }
 ]

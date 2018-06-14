@@ -27,5 +27,19 @@
       14
     ],
     "value": 4
+  },
+  {
+    "name": "Anneau Barroth",
+    "price": 6000,
+    "materials": [
+      15,
+      16,
+      24,
+      25,
+      26,
+      27,
+      28
+    ],
+    "value": 6
   }
 ]

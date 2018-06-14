@@ -27,5 +27,16 @@
       15
     ],
     "value": 4
+  },
+  {
+    "name": "Torse Barroth",
+    "price": 6000,
+    "materials": [
+      12,
+      16,
+      25,
+      28
+    ],
+    "value": 6
   }
 ]

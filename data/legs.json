@@ -26,5 +26,16 @@
       12
     ],
     "value": 4
+  },
+  {
+    "name": "Jambes Barroth",
+    "price": 6000,
+    "materials": [
+      15,
+      16,
+      24,
+      25
+    ],
+    "value": 6
   }
 ]
