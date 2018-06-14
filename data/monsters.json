@@ -134,26 +134,7 @@
     "xpmin": 1000,
     "xpmax": 1500,
     "rewards": [
-      {
-        "id": 24,
-        "dropRate": 3
-      },
-      {
-        "id": 25,
-        "dropRate": 3
-      },
-      {
-        "id": 26,
-        "dropRate": 5
-      },
-      {
-        "id": 27,
-        "dropRate": 5
-      },
-      {
-        "id": 28,
-        "dropRate": 10
-      }
+
     ],
     "moneymin": 1000,
     "moneymax": 1500,
