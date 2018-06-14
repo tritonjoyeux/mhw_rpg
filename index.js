@@ -254,11 +254,15 @@ client.on('message', (msg) => {
                 msg.channel.send("**Inventaire vide**");
             } else {
                 var content = "**Ton inventaire **: ";
+                var empty = true;
                 game[msg.author.id].inventory.forEach((e, i) => {
-                    if (e > 0)
+                    if (e > 0) {
+                        empty = false;
                         content += "\n - " + rewards[i] + " x" + e;
+                    }
                 });
-                msg.channel.send(content);
+
+                msg.channel.send(empty ? "**Inventaire vide**" : content);
             }
         } else if (args[0] === config.prefix + commands.stats) {
             var lvl = leveling[0];
@@ -606,9 +610,9 @@ function checkItem(list, msg, name, args) {
         var materials = "\n";
         var hasMaterial = true;
         list[args[2]].materials.forEach((e, i) => {
-            if (game[msg.author.id].inventory[e] === undefined || game[msg.author.id].inventory[e] === '0' || game[msg.author.id].inventory[e] === 0)
+            if (game[msg.author.id].inventory[e[0]] === undefined || game[msg.author.id].inventory[e[0]] === '0' || game[msg.author.id].inventory[e[0]] === 0 || game[msg.author.id].inventory[e[0]] < e[1])
                 hasMaterial = false;
-            materials += "- :one: " + rewards[e] + "\n";
+            materials += "- **"+e[1]+"** " + rewards[e[0]] + "\n";
         });
         msg.channel.send(list[args[2]].name + "\n\n" +
             "Prix : " + list[args[2]].price + " " + (list[args[2]].price > game[msg.author.id].money ? ":x:" : ":white_check_mark:") + "\n" +
@@ -624,7 +628,7 @@ function buyItem(args, list, msg) {
     } else {
         var hasMaterial = true;
         list[args[2]].materials.forEach((e, i) => {
-            if (game[msg.author.id].inventory[e] === undefined || game[msg.author.id].inventory[e] === '0' || game[msg.author.id].inventory[e] === 0)
+            if (game[msg.author.id].inventory[e[0]] === undefined || game[msg.author.id].inventory[e[0]] === '0' || game[msg.author.id].inventory[e[0]] === 0 || game[msg.author.id].inventory[e[0]] < e[1])
                 hasMaterial = false;
         });
 
@@ -632,7 +636,7 @@ function buyItem(args, list, msg) {
 
         if (hasMaterial && hasMoney) {
             list[args[2]].materials.forEach((e, i) => {
-                game[msg.author.id].inventory[e] -= 1;
+                game[msg.author.id].inventory[e[0]] -= e[1];
             });
             game[msg.author.id].money -= list[args[2]].price;
             return true;
