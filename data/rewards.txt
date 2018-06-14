@@ -36,3 +36,11 @@
 26 "Queue de Barroth"
 27 "Scalpe de Barroth"
 28 "Gemme Wyvern"
+
+#   en éxpédition dans le deser
+29 "Herbe de feu"
+30 "Os"
+31 "Cactus"
+32 "Baies"
+33 "Mythril"
+34 "Or"

@@ -120,5 +120,43 @@
     "moneymin": 500,
     "moneymax": 1000,
     "timeout": 300000
+  },
+  {
+    "pre": "Le",
+    "name": "Rathalos",
+    "pdv": 6000,
+    "attk": 40,
+    "def": 40,
+    "win0_15": 7,
+    "win16_30": 2,
+    "win31_50": 1,
+    "win51_inf": 1,
+    "xpmin": 1000,
+    "xpmax": 1500,
+    "rewards": [
+      {
+        "id": 24,
+        "dropRate": 3
+      },
+      {
+        "id": 25,
+        "dropRate": 3
+      },
+      {
+        "id": 26,
+        "dropRate": 5
+      },
+      {
+        "id": 27,
+        "dropRate": 5
+      },
+      {
+        "id": 28,
+        "dropRate": 10
+      }
+    ],
+    "moneymin": 1000,
+    "moneymax": 1500,
+    "timeout": 360000
   }
 ]

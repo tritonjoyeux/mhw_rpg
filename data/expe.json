@@ -64,5 +64,38 @@
       }
     ],
     "price": 2000
+  },
+  {
+    "pre": "Le",
+    "name": "Desert des Termites",
+    "lvlmin": 12,
+    "timeout": 900000,
+    "rewards": [
+      {
+        "id": 29,
+        "dropRate": 4
+      },
+      {
+        "id": 30,
+        "dropRate": 5
+      },
+      {
+        "id": 31,
+        "dropRate": 5
+      },
+      {
+        "id": 32,
+        "dropRate": 4
+      },
+      {
+        "id": 33,
+        "dropRate": 6
+      },
+      {
+        "id": 34,
+        "dropRate": 8
+      }
+    ],
+    "price": 6000
   }
 ]
