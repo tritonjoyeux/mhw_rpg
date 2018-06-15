@@ -137,7 +137,6 @@ client.on('message', (msg) => {
                 if (game[msg.author.id].xp >= e.xpmin && game[msg.author.id].xp <= e.xpmax)
                     lvl = leveling[i];
             });
-console.log(game[msg.author.id]);
             msg.channel.send(
                 "__**Ton pseudo**__ : " + game[msg.author.id].username + "\n\n" +
                 "__**Ton equipement**__ : \n" +
@@ -469,7 +468,12 @@ console.log(game[msg.author.id]);
                     if (expe[args[1] - 1] === undefined) {
                         msg.channel.send("**Zone incorrect**");
                     } else {
-                        if (game[msg.author.id].money >= expe[args[1] - 1].price) {
+                        var lvl = leveling[0];
+                        leveling.forEach((e, i) => {
+                            if (game[msg.author.id].xp >= e.xpmin && game[msg.author.id].xp <= e.xpmax)
+                                lvl = leveling[i];
+                        });
+                        if (game[msg.author.id].money >= expe[args[1] - 1].price && lvl["lvl"] >= expe[args[1] - 1].lvlmin) {
                             msg.channel.send("**Lancement de l'expedition dans " + expe[args[1] - 1].pre + " " + expe[args[1] - 1].name + "..** __Durée__ : " + ((expe[args[1] - 1].timeout / 1000) / 60) + " minutes");
                             game[msg.author.id].inFight = true;
                             game[msg.author.id].questTime = expe[args[1] - 1].timeout / 1000;
@@ -503,7 +507,7 @@ console.log(game[msg.author.id]);
                                 }, 10000)
                             });
                         } else {
-                            msg.reply("**Tu n'as pas asser d'argent..**");
+                            msg.reply("**Tu n'as pas asser d'argent ou ton niveau est trop faible..**");
                         }
                     }
                 } else {
@@ -612,7 +616,7 @@ function checkItem(list, msg, name, args) {
         list[args[2]].materials.forEach((e, i) => {
             if (game[msg.author.id].inventory[e[0]] === undefined || game[msg.author.id].inventory[e[0]] === '0' || game[msg.author.id].inventory[e[0]] === 0 || game[msg.author.id].inventory[e[0]] < e[1])
                 hasMaterial = false;
-            materials += "- **"+e[1]+"** " + rewards[e[0]] + "\n";
+            materials += "- **" + e[1] + "** " + rewards[e[0]] + "\n";
         });
         msg.channel.send(list[args[2]].name + "\n\n" +
             "Prix : " + list[args[2]].price + " " + (list[args[2]].price > game[msg.author.id].money ? ":x:" : ":white_check_mark:") + "\n" +
