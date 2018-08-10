@@ -52,5 +52,76 @@
       27,
       28
     ]
+  },
+  {
+    "name": "en éxpédition dans le desert",
+    "rewards": [
+      29,
+      30,
+      31,
+      32,
+      33,
+      34
+    ]
+  },
+  {
+    "name": "chasser un Rathalos",
+    "rewards": [
+      35,
+      36,
+      37,
+      38,
+      39
+    ]
+  },
+  {
+    "name": "chasser un Nergigante",
+    "rewards": [
+      40,
+      41,
+      42,
+      43,
+      44,
+      45
+    ]
+  },
+  {
+    "name": "chasser un Teostra",
+    "rewards": [
+      46,
+      47,
+      48,
+      49,
+      50,
+      51
+    ]
+  },
+  {
+    "name": "chasser un Kushala Daora",
+    "rewards": [
+      52,
+      53,
+      54,
+      55,
+      56,
+      57
+    ]
+  },
+  {
+    "name": "chasser un Vaal Hazak",
+    "rewards": [
+      58,
+      59,
+      60,
+      61,
+      62,
+      63
+    ]
+  },
+  {
+    "name": "chasser un Dragon ancien",
+    "rewards": [
+      64
+    ]
   }
 ]
