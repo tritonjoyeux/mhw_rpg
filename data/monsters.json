@@ -203,7 +203,7 @@
     ],
     "moneymin": 3000,
     "moneymax": 4000,
-    "timeout": 400000
+    "timeout": 420000
   },
   {
     "pre": "Le",
@@ -249,7 +249,7 @@
     ],
     "moneymin": 3000,
     "moneymax": 4000,
-    "timeout": 400000
+    "timeout": 420000
   },
   {
     "pre": "Le",
@@ -295,7 +295,7 @@
     ],
     "moneymin": 3000,
     "moneymax": 4000,
-    "timeout": 400000
+    "timeout": 420000
   },
   {
     "pre": "Le",
@@ -341,6 +341,6 @@
     ],
     "moneymin": 3000,
     "moneymax": 4000,
-    "timeout": 400000
+    "timeout": 420000
   }
 ]
