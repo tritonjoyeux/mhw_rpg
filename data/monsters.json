@@ -133,11 +133,214 @@
     "win51_inf": 1,
     "xpmin": 1000,
     "xpmax": 1500,
-    "rewards": [
-
+    "rewards":[
+      {
+        "id": 35,
+        "dropRate": 3
+      },
+      {
+        "id": 36,
+        "dropRate": 3
+      },
+      {
+        "id": 37,
+        "dropRate": 10
+      },
+      {
+        "id": 38,
+        "dropRate": 5
+      },
+      {
+        "id": 39,
+        "dropRate": 5
+      }
     ],
     "moneymin": 1000,
     "moneymax": 1500,
     "timeout": 360000
+  },
+  {
+    "pre": "Le",
+    "name": "Nergigante",
+    "pdv": 10000,
+    "attk": 60,
+    "def": 60,
+    "win0_15": 20,
+    "win16_30": 10,
+    "win31_50": 6,
+    "win51_inf": 3,
+    "xpmin": 2000,
+    "xpmax": 4000,
+    "rewards": [
+      {
+        "id": 40,
+        "dropRate": 10
+      },
+      {
+        "id": 41,
+        "dropRate": 3
+      },
+      {
+        "id": 42,
+        "dropRate": 3
+      },
+      {
+        "id": 43,
+        "dropRate": 5
+      },
+      {
+        "id": 44,
+        "dropRate": 5
+      },
+      {
+        "id": 45,
+        "dropRate": 3
+      },
+      {
+        "id": 64,
+        "dropRate": 40
+      }
+    ],
+    "moneymin": 3000,
+    "moneymax": 4000,
+    "timeout": 400000
+  },
+  {
+    "pre": "Le",
+    "name": "Teostra",
+    "pdv": 10000,
+    "attk": 60,
+    "def": 60,
+    "win0_15": 20,
+    "win16_30": 10,
+    "win31_50": 6,
+    "win51_inf": 3,
+    "xpmin": 2000,
+    "xpmax": 4000,
+    "rewards": [
+      {
+        "id": 46,
+        "dropRate": 5
+      },
+      {
+        "id": 47,
+        "dropRate": 3
+      },
+      {
+        "id": 48,
+        "dropRate": 5
+      },
+      {
+        "id": 49,
+        "dropRate": 10
+      },
+      {
+        "id": 50,
+        "dropRate": 3
+      },
+      {
+        "id": 51,
+        "dropRate": 3
+      },
+      {
+        "id": 64,
+        "dropRate": 40
+      }
+    ],
+    "moneymin": 3000,
+    "moneymax": 4000,
+    "timeout": 400000
+  },
+  {
+    "pre": "Le",
+    "name": "Kushala Daora",
+    "pdv": 10000,
+    "attk": 60,
+    "def": 60,
+    "win0_15": 20,
+    "win16_30": 10,
+    "win31_50": 6,
+    "win51_inf": 3,
+    "xpmin": 2000,
+    "xpmax": 4000,
+    "rewards": [
+      {
+        "id": 52,
+        "dropRate": 3
+      },
+      {
+        "id": 53,
+        "dropRate": 10
+      },
+      {
+        "id": 54,
+        "dropRate": 3
+      },
+      {
+        "id": 55,
+        "dropRate": 5
+      },
+      {
+        "id": 56,
+        "dropRate": 3
+      },
+      {
+        "id": 57,
+        "dropRate": 5
+      },
+      {
+        "id": 64,
+        "dropRate": 40
+      }
+    ],
+    "moneymin": 3000,
+    "moneymax": 4000,
+    "timeout": 400000
+  },
+  {
+    "pre": "Le",
+    "name": "Vaal Hazak",
+    "pdv": 10000,
+    "attk": 40,
+    "def": 40,
+    "win0_15": 20,
+    "win16_30": 10,
+    "win31_50": 6,
+    "win51_inf": 3,
+    "xpmin": 2000,
+    "xpmax": 4000,
+    "rewards": [
+      {
+        "id": 58,
+        "dropRate": 3
+      },
+      {
+        "id": 59,
+        "dropRate": 3
+      },
+      {
+        "id": 60,
+        "dropRate": 5
+      },
+      {
+        "id": 61,
+        "dropRate": 10
+      },
+      {
+        "id": 62,
+        "dropRate": 3
+      },
+      {
+        "id": 63,
+        "dropRate": 5
+      },
+      {
+        "id": 64,
+        "dropRate": 40
+      }
+    ],
+    "moneymin": 3000,
+    "moneymax": 4000,
+    "timeout": 400000
   }
 ]

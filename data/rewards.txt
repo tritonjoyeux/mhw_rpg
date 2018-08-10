@@ -37,10 +37,52 @@
 27 "Scalpe de Barroth"
 28 "Gemme Wyvern"
 
-#   en éxpédition dans le deser
+#   en éxpédition dans le desert
 29 "Herbe de feu"
 30 "Os"
 31 "Cactus"
 32 "Baies"
 33 "Mythril"
 34 "Or"
+
+#   chasser un Rathalos
+35 "Aile de Rathalos"
+36 "Ecaille de Rathalos"
+37 "Gemme de Rathalos"
+38 "Poche de flamme"
+39 "Queue de Rathalos"
+
+#   chasser un Nergigante
+40 "Gemme  Nergigante"
+41 "Plaque régénérante"
+42 "Ecaille dragon immortel"
+43 "Queue Nergigante"
+44 "Corne  Nergigante"
+45 "Serre Nergigante"
+
+#   chasser un Teostra
+46 "Corne teostra"
+47 "Ecaille teostra"
+48 "Poche d'explosion"
+49 "Gemme Teostra"
+50 "Crinière  teostra"
+51 "Aile teostra"
+
+#   chasser un Kushala Daora
+52 "Corne Daora"
+53 "Gemme Daora"
+54 "Ecaille Daora"
+55 "Griffe Daora"
+56 "Aile Daora"
+57 "Queue Daora"
+
+#   chasser un Vaal Hazak
+58 "Ecaille dragon zombie"
+59 "Aile Vaal"
+60 "Griffe Vaal"
+61 "Gemme Vaal"
+62 "Croc Vaal"
+63 "Queue Vaal"
+
+#  chasser un Dragon ancien
+64 "Couronne majestueuse"
